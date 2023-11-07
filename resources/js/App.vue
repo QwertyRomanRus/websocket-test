@@ -1,5 +1,5 @@
 <template>
-    <div class="flex">
+    <div v-if="token" class="flex">
         <router-link to="/test" class="mx-3">test</router-link>
         <router-link to="/index" class="mx-3">index</router-link>
         <router-link :to="{name: 'message.index'}" class="mx-3">message</router-link>

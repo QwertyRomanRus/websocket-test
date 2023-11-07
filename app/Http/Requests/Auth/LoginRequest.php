@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserLikeRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
-    protected function prepareForValidation()
-    {
-        $this->sender_id = auth()->user()->id;
-    }
-
+    /**
+     * Determine if the user is authorized to make this request.
+     */
     public function authorize(): bool
     {
         return true;
@@ -24,7 +22,8 @@ class UserLikeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sender_id' => ['required', 'integer']
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ];
     }
 }

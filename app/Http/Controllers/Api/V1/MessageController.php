@@ -7,13 +7,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Message\StoreRequest;
 use App\Http\Resources\MessageResource;
 use App\Models\Message;
-use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
     public function index()
     {
         $messages = Message::latest()->get();
+
         return MessageResource::collection($messages);
     }
 
@@ -21,6 +21,7 @@ class MessageController extends Controller
     {
         $message = Message::create($request->validated());
         broadcast(new SendMessageEvent($message))->toOthers();
+
         return MessageResource::make($message);
     }
 }

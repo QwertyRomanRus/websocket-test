@@ -5,8 +5,6 @@ namespace App\Events;
 use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -19,7 +17,7 @@ class SendLikeEvent implements ShouldBroadcast
      * Create a new event instance.
      */
     public function __construct(
-        private readonly User   $user,
+        private readonly User $user,
         private readonly string $likeString)
     {
         //
@@ -33,7 +31,7 @@ class SendLikeEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new Channel('send_like_' . $this->user->id),
+            new Channel('send_like_'.$this->user->id),
         ];
     }
 
@@ -45,7 +43,7 @@ class SendLikeEvent implements ShouldBroadcast
     public function broadcastWith(): array
     {
         return [
-            'like_string' => $this->likeString
+            'like_string' => $this->likeString,
         ];
     }
 }

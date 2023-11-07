@@ -32,7 +32,7 @@ export default {
         },
 
         sendLike() {
-            api.post(`/api/v1/users/${this.user.id}/send-like`, {}).then(res => {
+            api.get(`/api/v1/users/${this.user.id}/send-like`).then(res => {
                 this.likedString = res.data.like_string;
             })
         },

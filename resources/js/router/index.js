@@ -4,8 +4,7 @@ const routes = [
     {path: "/index", component: () => import('../Pages/Index.vue'), name: 'pages.index'},
     {path: "/message", component: () => import('../Pages/Message/Index.vue'), name: 'message.index'},
     {path: "/users/:id", component: () => import('../Pages/User/Show.vue'), name: 'user.show'},
-    {path: "/test", component: () => import('../Pages/Test.vue'),},
-    {path: "/login", component: () => import('../Pages/Login.vue'), name: 'auth.login',},
+    {path: "/login", component: () => import('../Pages/Auth/Login.vue'), name: 'auth.login',},
     {path: '/:catchAll(.*)', component: () => import("../Pages/NotFound.vue"), name: "pages.not-found"}
 ];
 
