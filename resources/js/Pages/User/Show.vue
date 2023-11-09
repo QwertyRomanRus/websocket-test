@@ -44,7 +44,7 @@ export default {
     },
 
     mounted() {
-        window.Echo.channel(`send_like_${localStorage.getItem('user_id')}`)
+        window.Echo.private(`send_like_${localStorage.getItem('user_id')}`)
             .listen('.send_like', (res) => {
                 this.likedString = res.like_string;
             })
